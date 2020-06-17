@@ -19,9 +19,9 @@ public class Categorias extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-       /* response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. 
+            // TODO output your page here. You may use following sample code. 
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
@@ -31,14 +31,26 @@ public class Categorias extends HttpServlet {
             out.println("<h1>Servlet Categorias at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
-        } */
+        } 
     }
 
     @Override
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-     
+    
+     @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String parametro = request.getParameter("opcion"); //Capturar el parametro que se esta enviando
+        if (parametro.equals("crear")) { //Evaluar si el parametro es crear o listar o cualquier otro
+            String pagina = "/Vistas-Categorias/crearCategoria.jsp"; //Vista o formulario para registrar una nueva categoria
+            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
+            dispatcher.forward(request, response);
+       }else{
+            this.listaCategorias(request, response);
+        }
+    }
     
     protected void listaCategorias(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
@@ -52,20 +64,8 @@ public class Categorias extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        String parametro = request.getParameter("opcion"); //Capturar el parametro que se esta enviando
-        if (parametro.equals("crear")) { //Evaluar si el parametro es crear o listar o cualquier otro
-            String pagina = "/Vistas-Categorias/crearCategoria.jsp"; //Vista o formulario para registrar una nueva categoria
-            RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
-            dispatcher.forward(request, response);
-       }else{
-            this.listaCategorias(request, response);
-        }
-    }
     
-   @Override
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         

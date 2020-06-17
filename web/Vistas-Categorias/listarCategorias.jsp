@@ -18,9 +18,13 @@
     <body>
         <%@include file = "../WEB-INF/Vistas-Parciales/encabezado.jspf" %>  
         
-        <div style="width: 600px;">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-9 col-md-6 col-sm-4">
+                    <div style="width: 600px;">
             <a href="<%= request.getContextPath() %>/categorias?opcion=crear" class="btn bg-success btn-sm glyphicon glyphicon-pencil" role="button"> Nueva Categoria</a>
-        <h3>Listado de Categorias Registradas</h3>
+        
+            <h3>Listado de Categorias Registradas</h3>
         <table class="table table-striped">
             <tr>
                 <th>ID</th><th>Nombre</th><th>Estado</th><th>ACCION</th>
@@ -36,14 +40,17 @@
                 <td><%= categoria.getNom_categoria()%></td>
                 <td><%= categoria.getEstado_categoria()%></td>
                 <td>
-                    <a href="#" class="btn btn-info btn-sm glyphicon glyphicon-edit" role="button"> Editar</a>
-                    <a href="#" class="btn btn-danger btn-sm glyphicon glyphicon-remove" role="button"> Eliminar</a>
+                    <a href="editar?id_categoria=<%= categoria.getId_categoria()%>" class="btn btn-info btn-sm glyphicon glyphicon-edit" role="button"> Editar</a>
+                    <a href="eliminar?id_categoria=<%= categoria.getId_categoria()%>" class="btn btn-danger btn-sm glyphicon glyphicon-remove" role="button"> Eliminar</a>
                 </td>
             </tr>
             <%
                 }
             %>
         </table>
+        </div>
+                </div>
+            </div>
         </div>
         
         <%@include file = "../WEB-INF/Vistas-Parciales/pie.jspf" %>  

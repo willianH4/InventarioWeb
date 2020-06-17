@@ -4,9 +4,25 @@
         <servlet-name>Index</servlet-name>
         <servlet-class>Controller.Index</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Editar</servlet-name>
+        <servlet-class>Controller.Editar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Eliminar</servlet-name>
+        <servlet-class>Controller.Eliminar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/index</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Editar</servlet-name>
+        <url-pattern>/editar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Eliminar</servlet-name>
+        <url-pattern>/eliminar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
