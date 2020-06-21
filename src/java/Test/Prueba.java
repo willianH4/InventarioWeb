@@ -10,12 +10,12 @@ public class Prueba {
     public static void main(String[] args) {
         Prueba evaluar = new Prueba();
         evaluar.guardaCategoria();
-        evaluar.listarCategorias();
+     //   evaluar.listarCategorias();
         //evaluar.eliminarCategoria();
         //evaluar.listarCategorias();
     }
      
-   public void listarCategorias(){
+  /* public void listarCategorias(){
     CategoriaDAO categoria = new CategoriaDAOImplementar();
     List<Categoria> listar = categoria.Listar();
         System.out.println("Listado de categorias");
@@ -24,7 +24,7 @@ public class Prueba {
                     " Nombre: " + categoriaListar.getNom_categoria() + 
                     " Estado: " + categoriaListar.getEstado_categoria());
         }
-  } 
+  } */
       public void guardaCategoria(){
          CategoriaDAO categoria = new CategoriaDAOImplementar();
          Categoria guarda_cat = new Categoria();

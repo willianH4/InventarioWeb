@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import DAO.CategoriaDAO;
 import DAO.CategoriaDAOImplementar;
 import Model.Categoria;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -18,10 +20,21 @@ import Model.Categoria;
  */
 public class Eliminar extends HttpServlet {
 
-    String listar="/Vistas-Categorias/listarCategorias.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
+    }
+    //Metodo para listar
+    protected void listaCategorias(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException{
+        response.setContentType("text/html;charset=UTF-8");
+        //Crear instancia de CategoriaDAO
+        CategoriaDAO categoria = new CategoriaDAOImplementar();
+        //Crear instancia de session; se le da true para crear la sesion
+        HttpSession sesion = request.getSession(true);
+        sesion.setAttribute("lista", categoria.Listar()); //Lista es el nombre de la sesion
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/Vistas-Categorias/listarCategorias.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
@@ -33,14 +46,9 @@ public class Eliminar extends HttpServlet {
         CategoriaDAO categoria = new CategoriaDAOImplementar();
         Categoria cat;
         cat = (Categoria) categoria.editarCat(id_cat_edit);
-        
         cat.setId_categoria(id_cat_edit);
-        
-        if (categoria.borrarCat(id_cat_edit)){
-            request.getRequestDispatcher("/Vistas-Categorias/borrar.jsp").forward(request, response);
-        }else{
-            request.getRequestDispatcher("/Vistas-Categorias/index.jsp").forward(request, response);
-        }  
+        categoria.borrarCat(id_cat_edit);  //Llamado del metodo para borrar
+        this.listaCategorias(request, response);
     }
 
     @Override

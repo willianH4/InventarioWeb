@@ -71,12 +71,13 @@ public class Categorias extends HttpServlet {
         
         Categoria categoria = new Categoria();
         //Se efectua el casting o conversion de datos porque lo ingresado en el formulario es texto
-        categoria.setId_categoria(Integer.parseInt(request.getParameter("id_categoria")));
-        categoria.setNom_categoria(request.getParameter("txtNomCategoria"));
-        categoria.setEstado_categoria(Integer.parseInt(request.getParameter("txtEstadoCategoria")));
+        categoria.setId_categoria(Integer.parseInt(request.getParameter("idcategoria")));
+        categoria.setNom_categoria(request.getParameter("txtnombre"));
+        categoria.setEstado_categoria(Integer.parseInt(request.getParameter("txtestado")));
         
         CategoriaDAO guardaCategoria = new CategoriaDAOImplementar();
         guardaCategoria.guardarCat(categoria);
         this.listaCategorias(request, response);
+        //response.sendRedirect("/Vistas-Categorias/listarCategorias.jsp");
     }
 }

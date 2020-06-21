@@ -14,7 +14,7 @@
     </head>
     <body>
         <%@include file="WEB-INF/Vistas-Parciales/encabezado.jspf" %>
-        <h3>Bienvenid@! </h3>
+        <h3 class="">Bienvenid@! </h3>
         
         
         <%@include file="WEB-INF/Vistas-Parciales/pie.jspf" %>

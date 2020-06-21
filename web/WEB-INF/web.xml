@@ -12,6 +12,14 @@
         <servlet-name>Eliminar</servlet-name>
         <servlet-class>Controller.Eliminar</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Pdf</servlet-name>
+        <servlet-class>Pdf.Pdf</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Reporte</servlet-name>
+        <servlet-class>reporte.Reporte</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>
         <url-pattern>/index</url-pattern>
@@ -23,6 +31,14 @@
     <servlet-mapping>
         <servlet-name>Eliminar</servlet-name>
         <url-pattern>/eliminar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Pdf</servlet-name>
+        <url-pattern>/pdf</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Reporte</servlet-name>
+        <url-pattern>/reporte</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
